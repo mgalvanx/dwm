@@ -104,6 +104,7 @@ ResourcePref resources[] = {
 };
 
 #include "movestack.c"
+#include "shiftview.c"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
