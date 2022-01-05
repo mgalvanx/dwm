@@ -164,7 +164,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") },
 	{ MODKEY,			XK_backslash,		view,		{0} },
 	{ MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
-        { MODKEY,                                     XK_BackSpace,      spawn,                SHCMD("sysact") },
+        { MODKEY,                  XK_BackSpace,   spawn,          SHCMD("sysact") },
 
 	/* modifier                     key        function        argument */
         { MODKEY,			XK_z,      incrgaps,	   {.i = +3 } },
@@ -179,7 +179,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_slash,		spawn,		SHCMD("dmyt") }, 
+	{ MODKEY,		        XK_slash,  spawn,	   SHCMD("dlynx") }, 
+	{ MODKEY|ShiftMask,		XK_slash,  spawn,	   SHCMD("dmyt") }, 
 
 	{ MODKEY,                       XK_space,  zoom,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
