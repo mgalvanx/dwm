@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "alacritty"
-#define TERMCLASS "alacritty"
+#define TERMINAL "st"
+#define TERMCLASS "st"
 
 /* appearance */
 static unsigned int borderpx  = 1;        /* border pixel of windows */
