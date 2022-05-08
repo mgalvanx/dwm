@@ -41,7 +41,7 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "mpv",     NULL,     NULL,           0,         1,          1,           0,        -1 },
+	{ "mpv",     NULL,    "newboat-mpv",   0,         1,          1,           0,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -124,8 +124,9 @@ ResourcePref resources[] = {
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 
-	{ MODKEY,                       XK_a,      view,     {0} },
+	/*{ MODKEY,                       XK_a,      view,     {0} },*/
 	/*{ MODKEY|ShiftMask,             XK_a,      defaultgaps,    {0} },*/
+	{ MODKEY|ShiftMask,             XK_a,      view,    {0} },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,		XK_f,      setlayout,	   {.v = &layouts[8]} },	
