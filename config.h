@@ -124,9 +124,8 @@ ResourcePref resources[] = {
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 
-	/*{ MODKEY,                       XK_a,      view,     {0} },*/
+	{ MODKEY,                       XK_a,      view,     {0} },
 	/*{ MODKEY|ShiftMask,             XK_a,      defaultgaps,    {0} },*/
-	{ MODKEY|ShiftMask,             XK_a,      view,    {0} },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,		XK_f,      setlayout,	   {.v = &layouts[8]} },	
@@ -145,7 +144,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_Tab,    defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    togglegaps,           {0} },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
+	/*{ MODKEY,                       XK_q,      killclient,     {0} },*/
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
         { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,			XK_t,	   setlayout,	   {.v = &layouts[0]} }, /* tile */
