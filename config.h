@@ -185,7 +185,7 @@ static Key keys[] = {
 	{ MODKEY,		        XK_slash,  spawn,	   SHCMD("dlynx") }, 
 	{ MODKEY|ShiftMask,		XK_slash,  spawn,	   SHCMD("dmyt") }, 
 
-	{ MODKEY,                       XK_space,  zoom,      {0} },
+/*	{ MODKEY,                       XK_space,  zoom,      {0} },*/
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
