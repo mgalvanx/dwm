@@ -142,8 +142,8 @@ static Key keys[] = {
  	/* { MODKEY,                       XK_Return, zoom,           {0} }, */
 
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_Tab,    defaultgaps,    {0} },
-	{ MODKEY,                       XK_Tab,    togglegaps,           {0} },
+	{ MODKEY|ShiftMask,             XK_F4,    defaultgaps,    {0} },
+	{ MODKEY,                       XK_F5,    togglegaps,           {0} },
 	/*{ MODKEY,                       XK_q,      killclient,     {0} },*/
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
         { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(TERMINAL " -e sudo nmtui") },
@@ -200,10 +200,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 
-        { MODKEY,			XK_minus,	spawn,		SHCMD("pamixer  -d 5; notify-send 'Decreasing Volume by 5'") },
-	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("pamixer  -d 15; notify-send 'Decreasing Volume by 15") },
-	{ MODKEY,			XK_equal,	spawn,		SHCMD("pamixer  -i 5; notify-send 'Increasing Volume by 5'") },
-	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("pamixer  -i 15; notify-send 'Increasing Volume by 15'") },
+        { MODKEY,			XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 5; notify-send 'Decreasing Volume by 5'") },
+	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 15; notify-send 'Decreasing Volume by 15") },
+	{ MODKEY,			XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 5; notify-send 'Increasing Volume by 5'") },
+	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 15; notify-send 'Increasing Volume by 15'") },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
