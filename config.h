@@ -174,6 +174,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_x,      incrgaps,	   {.i = -3 } },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} }, 
 	/* { MODKEY,			XK_v,		spawn,		SHCMD("") }, */
+  { MODKEY,       XK_n,      spawn,          SHCMD(TERMINAL " -e worknote") },
+  { MODKEY,       XK_m,      spawn,          SHCMD(TERMINAL " -e worktodos") },
 	/*{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
