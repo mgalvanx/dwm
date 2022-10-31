@@ -39,13 +39,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "mpv",     NULL,    "newboat-mpv",   0,         1,          1,           0,        -1 },
-	{ "mpv",     NULL,    "mpv",           0,         1,          1,           1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class     instance  title           tags mask  iscentered  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",    NULL,     NULL,           0,         0,          1,          0,           0,        -1 },
+	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          0,          -1,        -1 },
+	{ "mpv",     NULL,    "newboat-mpv",   0,         0,          1,          0,           0,        -1 },
+	{ "mpv",     NULL,    "ytfzf-mpv",     0,         0,          1,          0,           0,        -1 },
+	{ "st",      NULL,     NULL,           0,         0,          0,          1,           0,        -1 },
+	{ NULL,      NULL,     "Event Tester", 0,         0,          0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -146,7 +146,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_F4,    defaultgaps,    {0} },
 	{ MODKEY,                       XK_F5,    togglegaps,           {0} },
-	/*{ MODKEY,                       XK_q,      killclient,     {0} },*/
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
         { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,			XK_t,	   setlayout,	   {.v = &layouts[0]} }, /* tile */
@@ -190,6 +190,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_slash,  spawn,	   SHCMD("dmyt") }, 
 
 /*	{ MODKEY,                       XK_space,  zoom,      {0} },*/
+	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
