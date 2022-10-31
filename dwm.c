@@ -350,12 +350,9 @@ applyrules(Client *c)
 		&& (!r->class || strstr(class, r->class))
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
-<<<<<<< HEAD
+			c->iscentered = r->iscentered;
 			c->isterminal = r->isterminal;
 			c->noswallow  = r->noswallow;
-=======
-			c->iscentered = r->iscentered;
->>>>>>> 3489d63 (patched center-patch)
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
