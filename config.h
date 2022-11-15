@@ -43,11 +43,11 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           0,         0,          1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          0,          -1,        -1 },
 	{ "mpv",     NULL,    "newsboat-mpv",  0,         0,          1,          0,           0,        -1 },
-	{ "libreoffice", NULL,     NULL,       0,         0,          0,          1,           0,        -1 },
+	{ "libreoffice", NULL,     NULL,       0,         0,          0,          0,           0,        -1 },
 	{ "mpv",     NULL,    "ytfzf-mpv",     0,         0,          1,          0,           0,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          0,          1,           0,        -1 },
 	{ "St",      NULL,     "worknote",     0,         1,          1,          0,           0,        -1 },
-	{ "St",      NULL,     "worktodos",    0,         1,          1,          0,           0,        -1 },
+	{ "XTerm",   NULL,     "todos",        0,         1,          1,          0,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,          0,           1,        -1 }, /* xev */
 };
 
@@ -144,6 +144,7 @@ static Key keys[] = {
 	{ MODKEY,		XK_semicolon,      shiftview,      { .i = 1 } },
 	/*{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },*/
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("xterm") },
  	/* { MODKEY,                       XK_Return, zoom,           {0} }, */
 
 	/* modifier                     key        function        argument */
@@ -180,7 +181,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} }, 
 	/* { MODKEY,			XK_v,		spawn,		SHCMD("") }, */
   { MODKEY,       XK_n,      spawn,          SHCMD(TERMINAL " -e worknote") },
-  { MODKEY,       XK_m,      spawn,          SHCMD(TERMINAL " -e worktodos") },
+  { MODKEY,       XK_m,      spawn,          SHCMD("xterm -e todos") },
 	/*{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
