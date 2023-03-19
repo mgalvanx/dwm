@@ -79,7 +79,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -131,8 +131,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_a,      view,     {0} },
 	/*{ MODKEY|ShiftMask,             XK_a,      defaultgaps,    {0} },*/
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
-	{ MODKEY|ShiftMask,		XK_f,      setlayout,	   {.v = &layouts[8]} },	
+	{ MODKEY|ShiftMask,                       XK_f,      togglefullscr,  {0} },
+	{ MODKEY,		                    XK_f,      spawn,	  SHCMD("fmenu") }, 
+/*	{ MODKEY|ShiftMask,		XK_f,      setlayout,	   {.v = &layouts[8]} },	*/
 	{ MODKEY,		        XK_g,	   shiftview,  	   { .i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
