@@ -32,7 +32,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "1", "2", "3" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -41,17 +41,22 @@ static const Rule rules[] = {
 	 */
 	/* class         instance  title           tags mask  iscentered  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",        NULL,     NULL,           0,         0,          1,          0,           0,        -1 },
-	{ "Firefox",     NULL,     NULL,           1 << 8,    0,          0,          0,          -1,        -1 },
-	{ "firefox-esr", NULL,     NULL,           1 << 8,    0,          0,          0,          -1,         2 },
+	{ "firefox",     NULL,     NULL,           1<<1,      0,          0,          0,          -1,         0 },
+	{ "firefox-esr", NULL,     NULL,           1<<1,      0,          0,          0,          -1,         2 },
+	{ "thunderbird", NULL,     NULL,           1<<4,      0,          0,          0,          -1,        -1 },
 	{ "mpv",         NULL,     "newsboat-mpv", 0,         0,          1,          0,           0,        -1 },
 	{ "mpv",         NULL,     NULL,           0,         0,          1,          0,           0,        -1 },
 	{ "libreoffice", NULL,     NULL,           0,         0,          0,          0,           0,        -1 },
 	{ "St",          NULL,     NULL,           0,         0,          0,          1,           0,        -1 },
 	{ "St",          NULL,     "nmtui",        0,         1,          1,          1,           0,        -1 },
-	{ "St",          NULL,     "ncspot",       0,         1,          1,          1,           0,        -1 },
+	{ "St",          NULL,     "unlock",       0,         1,          1,          1,           0,         0 },
+	{ "St",          NULL,     "phone",        0,         1,          1,          1,           0,        -1 },
+	{ "St",          NULL,     "music",        0,         1,          1,          1,           0,        -1 },
 	{ "St",          NULL,     "pulsemixer",   0,         1,          1,          1,           0,        -1 },
-	{ "St",          NULL,     "home",         0,         1,          1,          1,           0,         0 },
-	{ "St",          NULL,     "scratch",      0,         0,          0,          1,           0,         2 },
+	{ "St",          NULL,     "home",         1,         1,          1,          1,           0,         0 },
+	{ "St",          NULL,     "term",         1,         0,          0,          1,           0,         2 },
+	{ "St",          NULL,     "scratch",      2,         0,          0,          1,           0,         2 },
+	{ "St",          NULL,     "system",       1,         0,          0,          1,           0,         1 },
 	{ "scrcpy",      NULL,     NULL,           0,         0,          0,          1,           0,         1 },
 	{ NULL,          NULL,     "Event Tester", 0,         0,          0,          0,           1,        -1 }, /* xev */
 };
@@ -135,10 +140,12 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 
 	{ MODKEY,                       XK_a,      view,     {0} },
-	 { MODKEY,                      XK_s,      spawn,          SHCMD("pulsemixer-term") },
+	{ MODKEY,                      XK_s,      spawn,          SHCMD("pulsemixer-term") },
+	{ MODKEY|ShiftMask,                      XK_s,      spawn,          SHCMD("tmux-system") },
 	/*{ MODKEY|ShiftMask,             XK_a,      defaultgaps,    {0} },*/
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,                       XK_f,      togglefullscr,  {0} },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("passcheck") },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,		                    XK_f,      spawn,	  SHCMD("fmenu") }, 
 /*	{ MODKEY|ShiftMask,		XK_f,      setlayout,	   {.v = &layouts[8]} },	*/
 /*	{ MODKEY,		        XK_g,	   shiftview,  	   { .i = -1 } }, */
@@ -164,18 +171,23 @@ static Key keys[] = {
 
 /*	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } }, */
 /*	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } }, */
-	{ MODKEY,                       XK_Return, spawn,          SHCMD("st-tmux") },
+	{ MODKEY,                       XK_Return, spawn,          SHCMD("tmux-home") },
 /*	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("xterm") },*/
-	{ MODKEY,                       XK_Tab, spawn,          SHCMD("tmux-home") },
+	{ MODKEY,                       XK_h, spawn,               SHCMD("tmux-term") }, 
+	{ MODKEY|ShiftMask,             XK_h, spawn,               SHCMD("tmux-scratch") },
+/*	{ MODKEY,                       XK_Tab, spawn,          SHCMD("tmux-term") }, */
  	/* { MODKEY,                       XK_Return, zoom,           {0} }, */
 
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_F4,    defaultgaps,    {0} },
-	{ MODKEY,                       XK_F5,    togglegaps,           {0} },
 /*{ MODKEY,                       XK_q,      killclient,     {0} },*/
 
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
   { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("nmtui-term") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("maimshot") },
+  { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("maimpick") },
+
+
+
 	{ MODKEY,			XK_t,	   setlayout,	   {.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,	   setlayout,	   {.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,			XK_y,      setlayout,	   {.v = &layouts[2]} }, /* spiral */
@@ -195,11 +207,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },
 
-	{ MODKEY,		                    XK_p,      spawn,	  SHCMD("mplay") }, 
-	{ MODKEY|ShiftMask,		          XK_p,      spawn,	  SHCMD("mload") }, 
+	{ MODKEY,		                    XK_v,      spawn,	  SHCMD("mplay") }, 
+	{ MODKEY|ShiftMask,		          XK_v,      spawn,	  SHCMD("mload") }, 
 
-	{ MODKEY,                       XK_k, spawn,          SHCMD("tmux-scratch") },
-	{ MODKEY,                       XK_h, spawn,          SHCMD("ncspot-tmux") },
+	{ MODKEY,                       XK_k, spawn,          SHCMD("pixel") },
+	{ MODKEY|ShiftMask,             XK_k, spawn,          SHCMD("tmux-phone") },
+	{ MODKEY,                       XK_j, spawn,          SHCMD("tmux-music") },
 	/*
         { MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
 	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
@@ -212,8 +225,11 @@ static Key keys[] = {
   { MODKEY,                  XK_BackSpace,   spawn,          SHCMD("sysact") },
 
 	/* modifier                     key        function        argument */
-        { MODKEY,			XK_z,      incrgaps,	   {.i = +3 } },
-	{ MODKEY,			XK_x,      incrgaps,	   {.i = -3 } },
+	{ MODKEY|ShiftMask,             XK_F4,    defaultgaps,    {0} },
+	{ MODKEY,                       XK_F5,    togglegaps,           {0} },
+  { MODKEY,			XK_z,             incrgaps,	   {.i = +3 } },
+	{ MODKEY,			XK_x,             incrgaps,	   {.i = -3 } },
+	{ MODKEY,                       XK_c,      spawn,          SHCMD("comments") }, 
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} }, 
 
 	/* { MODKEY,			XK_v,		spawn,		SHCMD("") }, */
@@ -227,11 +243,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,		        XK_slash,  spawn,	   SHCMD("dlynx") }, 
+  { MODKEY,		        XK_slash,  spawn,	   SHCMD("dlynx") }, 
 	{ MODKEY|ShiftMask,		XK_slash,  spawn,	   SHCMD("dmyt") }, 
-
-/*	{ MODKEY,                       XK_space,  zoom,      {0} },*/
-	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
+/*	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },*/
+	{ MODKEY,                       XK_space,  zoom,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
