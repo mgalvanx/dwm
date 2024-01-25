@@ -54,6 +54,7 @@ static const Rule rules[] = {
 	{ "St",          NULL,     "music",        0,         1,          1,          1,           0,        -1 },
 	{ "St",          NULL,     "pulsemixer",   0,         1,          1,          1,           0,        -1 },
 	{ "St",          NULL,     "home",         1,         1,          1,          1,           0,         0 },
+	{ "St",          NULL,     "laptop",       1,         0,          0,          1,           0,         0 },
 	{ "St",          NULL,     "term",         1,         0,          0,          1,           0,         2 },
 	{ "St",          NULL,     "scratch",      2,         0,          0,          1,           0,         2 },
 	{ "St",          NULL,     "system",       1,         0,          0,          1,           0,         1 },
